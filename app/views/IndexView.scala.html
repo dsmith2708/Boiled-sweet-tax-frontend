@@ -1,0 +1,37 @@
+@import uk.gov.hmrc.govukfrontend.views.html.components.FormWithCSRF
+@import views.html.components._
+@import views.html.templates.Layout
+
+@this(layout: Layout,
+        heading: Heading,
+        subheading: Subheading,
+        paragraph: Paragraph,
+        list: BulletList,
+        continueButton: ContinueButton,
+        formWithCSRF: FormWithCSRF)
+
+@(formAction: Call)(implicit request: RequestHeader, messages: Messages)
+
+@layout(messages("index.title")) {
+
+    @formWithCSRF(action = formAction) {
+
+        @heading(messages("index.heading"))
+        @paragraph(messages("index.loremIpsum.paragraphOne"))
+        @paragraph(messages("index.loremIpsum.paragraphTwo"))
+
+        @subheading(messages("index.subheadingOne"))
+        @paragraph(messages("index.loremIpsum.listParagraph"))
+        @list(
+            Seq(messages("index.loremIpsum.listItemOne"),
+                messages("index.loremIpsum.listItemTwo"),
+                messages("index.loremIpsum.listItemThree")
+            )
+        )
+
+        @subheading(messages("index.subheadingTwo"))
+
+        @continueButton()
+    }
+
+}

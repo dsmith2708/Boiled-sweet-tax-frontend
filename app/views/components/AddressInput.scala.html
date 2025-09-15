@@ -1,0 +1,67 @@
+@import uk.gov.hmrc.govukfrontend.views.Aliases.{Fieldset, Hint, Input, Text}
+@import uk.gov.hmrc.govukfrontend.views.Implicits.RichInput
+@import uk.gov.hmrc.govukfrontend.views.html.components.{GovukFieldset, GovukHint, GovukInput}
+@import uk.gov.hmrc.govukfrontend.views.viewmodels.label.Label
+
+@this(govukInput: GovukInput, govukFieldset: GovukFieldset, govukHint: GovukHint)
+
+@(form: Form[BusinessAddress], hintText: String)(implicit messages: Messages)
+
+    @govukFieldset(Fieldset(
+        html = addressHtml
+    ))
+
+    @addressHtml = {
+        @govukHint(Hint(
+            content = Text(hintText),
+            id = Some("businessAddress-hint")
+        ))
+
+        @govukInput(Input(
+            id = "houseNumber",
+            name = "houseNumber",
+            classes = "govuk-input--width-5",
+            label = Label(
+                content = Text(messages("businessAddress.houseNumber")),
+            ),
+        ).withFormField(form("houseNumber")))
+
+        @govukInput(Input(
+            id = "street",
+            name = "street",
+            classes = "govuk-!-width-two-thirds",
+            label = Label(
+                content = Text(messages("businessAddress.street")),
+            )
+        ).withFormField(form("street")))
+
+        @govukInput(Input(
+            id = "city",
+            name = "city",
+            classes = "govuk-!-width-two-thirds",
+            label = Label(
+                content = Text(messages("businessAddress.city")),
+            )
+        ).withFormField(form("city")))
+
+        @govukInput(Input(
+            id = "county",
+            name = "county",
+            classes = "govuk-!-width-two-thirds",
+            label = Label(
+                content = Text(messages("businessAddress.county")),
+            )
+        ).withFormField(form("county")))
+
+        @govukInput(Input(
+            id = "postcode",
+            name = "postcode",
+            classes = "govuk-input--width-10",
+            hint = Some(Hint(
+                content = Text(messages("businessAddress.postcode.hint"))
+            )),
+            label = Label(
+                content = Text(messages("businessAddress.postcode")),
+            )
+        ).withFormField(form("postcode")))
+    }

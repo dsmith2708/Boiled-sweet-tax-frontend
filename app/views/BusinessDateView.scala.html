@@ -1,0 +1,30 @@
+@import templates.Layout
+@import uk.gov.hmrc.govukfrontend.views.html.components.FormWithCSRF
+@import views.html.components.{ContinueButton, ErrorOutline, Heading, DateInput}
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+
+@this(
+        layout: Layout,
+        formwithCSRF: FormWithCSRF,
+        errorOutline: ErrorOutline,
+        heading: Heading,
+        govukDateInput : GovukDateInput,
+        dateInput: DateInput,
+        continueButton: ContinueButton
+)
+
+@(businessDateForm: Form[BusinessDate], formAction: Call)(implicit request: RequestHeader, messages: Messages)
+
+@layout(messages("businessDate.title"), businessDateForm.hasErrors) {
+    @formwithCSRF(action = formAction) {
+
+        @errorOutline(businessDateForm)
+
+        @heading(messages("businessDate.heading"))
+
+        @dateInput(businessDateForm, "For example, 27/3/2007")
+
+        @continueButton()
+    }
+}
+

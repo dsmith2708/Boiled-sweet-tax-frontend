@@ -1,0 +1,11 @@
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+
+@this(govukPanel : GovukPanel)
+
+@(titleText: String, referenceNumber: String)
+
+
+@govukPanel(Panel(
+title = Text(titleText),
+content = HtmlContent("""Your reference number<br><strong>""" + referenceNumber + """</strong>""")
+))

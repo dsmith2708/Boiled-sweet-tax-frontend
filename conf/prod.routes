@@ -1,0 +1,3 @@
+# Routes to static resources for hmrc frontend
+->       /register-for-boiled-sweet-tax           app.Routes
+

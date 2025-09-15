@@ -1,0 +1,26 @@
+# Routes
+# This file defines all application app.routes (Higher priority app.routes first)
+# https://www.playframework.com/documentation/latest/ScalaRouting
+# ~~~~
+
+->       /hmrc-frontend              hmrcfrontend.Routes
+
+# GET and POST routes for the index page
+GET      /                           controllers.IndexController.show()
+POST     /                           controllers.IndexController.submit()
+
+# GET and POST routes for the business name page
+GET      /business-name              controllers.BusinessNameController.show()
+POST     /business-name              controllers.BusinessNameController.submit()
+
+# GET and POST routes for the business date page
+GET      /business-date              controllers.BusinessDateController.show()
+POST     /business-date              controllers.BusinessDateController.submit()
+
+# GET and POST routes for the business address page
+GET      /business-address           controllers.BusinessAddressController.show()
+POST     /business-address           controllers.BusinessAddressController.submit()
+
+# GET and POST routes for the check answers page
+GET      /check-answers              controllers.CheckAnswersController.show()
+POST     /check-answers              controllers.CheckAnswersController.submit()

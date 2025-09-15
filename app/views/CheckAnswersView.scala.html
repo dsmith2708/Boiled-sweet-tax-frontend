@@ -1,0 +1,25 @@
+@import uk.gov.hmrc.govukfrontend.views.html.components.FormWithCSRF
+@import uk.gov.hmrc.govukfrontend.views.viewmodels.summarylist.SummaryListRow
+@import views.html.components.{CheckAnswersList, ConfirmButton, Heading}
+@import views.html.templates.Layout
+
+@this(layout: Layout,
+        heading: Heading,
+        checkAnswersList: CheckAnswersList,
+        confirmButton: ConfirmButton,
+        formWithCSRF: FormWithCSRF)
+
+@(summaryListRows: Seq[SummaryListRow], formAction: Call)(implicit request: RequestHeader, messages: Messages)
+
+@layout(messages("checkAnswers.title")) {
+
+    @formWithCSRF(action = formAction) {
+
+        @heading(messages("checkAnswers.heading"))
+
+        @checkAnswersList(summaryListRows)
+
+        @confirmButton()
+    }
+
+}

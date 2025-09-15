@@ -1,0 +1,72 @@
+service.name = Register for Boiled Sweet Tax
+
+common.continue = Continue
+common.confirm = Confirm
+common.yes = Yes
+common.no = No
+
+index.title = Welcome to the Boiled Sweet Tax registration service
+index.heading = Welcome to the Boiled Sweet Tax registration service
+index.subheadingOne = Required information:
+index.subheadingTwo = Click continue to begin
+
+index.loremIpsum.paragraphOne = The boiled sweet tax targets drinks containing 5g of sugar or more to help decrease obesity rate and the amount of sugar in any sweets or sugary drinks by taxing the company based on how much sugar is in the product.
+index.loremIpsum.paragraphTwo = The Boiled sweet tax aims to reduce sugar intake among children and promote healthier eating habits. The tax was introduced as part of the UK's anti-obesity policy, specifically targeting overweight children.
+index.loremIpsum.listParagraph = You will need to fill out some information boxes such as:
+index.loremIpsum.listItemOne = Business name,
+index.loremIpsum.listItemTwo = Business Start Date,
+index.loremIpsum.listItemThree = Business Address.
+
+businessName.title = What is the name of your business?
+businessName.heading = What is the name of your business?
+businessName.hint = This is the name of your business as it appears on official documents
+
+businessDate.title = What is the Date that your business started trading?
+businessDate.heading = What is the Date that your business started trading?
+businessDate.hint = The date that your business started trading.
+
+businessAddress.title = What is the address of your business?
+businessAddress.heading = What is the address of your business?
+businessAddress.hint = This is the address of your business as it appears on official documents
+businessAddress.houseNumber = Building number
+businessAddress.street = Street
+businessAddress.city = City/Town
+businessAddress.county = County (optional)
+businessAddress.postcode = Postcode
+businessAddress.postcode.hint = For example, A1AA 1AA
+
+checkAnswers.title = Check your answers
+checkAnswers.heading = Check your answers
+checkAnswers.businessName = Business name
+checkAnswers.businessAddress = Business address
+checkAnswers.change = Change
+
+confirmation.paragraphOne = We have sent you an email to confirm your registration.
+confirmation.subheading = What happens next
+confirmation.paragraphTwo = Your registration has been entered into our system.
+confirmation.paragraphThree = You will be contacted again later to confirm your registration, or to ask for more information.
+
+
+error.prefix = Error:
+error.registration.empty = Select yes if you would like to register for Boiled Sweet Tax
+
+error.businessName.empty = Enter a business name
+error.businessName.invalid = The business name cannot contain invalid characters
+
+error.businessDate.invalid = The date entered is not valid
+error.businessDate.future = The date entered must be in the past
+error.businessDate.day.empty = Enter a valid day
+error.businessDate.day.range = Day out of range
+error.businessDate.month.empty = Enter a valid month
+error.businessDate.month.range = Month out of range
+error.businessDate.year.empty = Enter a valid year
+error.businessDate.year.range = Year must be greater than zero
+
+error.businessAddress.houseNumber.empty = Enter a building number
+error.businessAddress.houseNumber.invalid = The building number cannot contain invalid characters
+error.businessAddress.street.empty = Enter a street name
+error.businessAddress.street.invalid = The street name cannot contain invalid characters
+error.businessAddress.city.empty = Enter a city/town name
+error.businessAddress.city.invalid = The city/town name cannot contain invalid characters
+error.businessAddress.county.invalid = The county cannot contain invalid characters
+error.businessAddress.postcode.invalid = Enter a full UK postcode

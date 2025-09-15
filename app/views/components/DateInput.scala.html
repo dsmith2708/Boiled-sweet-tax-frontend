@@ -1,0 +1,74 @@
+@import uk.gov.hmrc.govukfrontend.views.Aliases.{Fieldset, Hint, Input, Text}
+@import uk.gov.hmrc.govukfrontend.views.Implicits.RichInput
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+@import uk.gov.hmrc.govukfrontend.views.viewmodels.label.Label
+
+@this(govukDateInput : GovukDateInput)
+
+@(form: Form[BusinessDate], hintText: String)(implicit messages: Messages)
+
+@if(form.hasErrors){
+    @govukDateInput(DateInput(
+        id = "business-start",
+        namePrefix = Some("business-start"),
+        items = Seq(
+            InputItem(
+                name = "day",
+                value = Some(""),
+                classes = s"govuk-input--width-2 ${if(form.errors.filter(_.key.equals("business-start-day"))) "govuk-input--error" else ""}"
+            ),
+            InputItem(
+                name = "month",
+                value = Some(""),
+                classes = s"govuk-input--width-2 ${if(form.errors.filter(_.key.equals("business-start-month"))) "govuk-input--error" else ""}"
+            ),
+            InputItem(
+                name = "year",
+                classes = s"govuk-input--width-4 ${if(form.errors.filter(_.key.equals("business-start-year"))) "govuk-input--error" else ""}" /*govuk-input--error*/
+            )
+        ),
+        hint = Some(Hint(
+            content = Text(hintText)
+        )),
+        errorMessage = Some(ErrorMessage(
+            content = Text(messages("error.businessDate.invalid"))
+        )),
+        fieldset = Some(Fieldset(
+            legend = Some(Legend(
+                classes = "govuk-fieldset__legend--l",
+                isPageHeading = true
+            ))
+        ))
+    ))
+
+} else {
+    @govukDateInput(DateInput(
+        id = "business-start",
+        namePrefix = Some("business-start"),
+        items = Seq(
+            InputItem(
+                name = "day",
+                value = Some(""),
+                classes = "govuk-input--width-2"
+            ),
+            InputItem(
+                name = "month",
+                value = Some(""),
+                classes = "govuk-input--width-2"
+            ),
+            InputItem(
+                name = "year",
+                classes = "govuk-input--width-4" /*govuk-input--error*/
+            )
+        ),
+        hint = Some(Hint(
+            content = Text("For example, 27 3 2007")
+        )),
+        fieldset = Some(Fieldset(
+            legend = Some(Legend(
+                classes = "govuk-fieldset__legend--l",
+                isPageHeading = true
+            ))
+        ))
+    ))
+}

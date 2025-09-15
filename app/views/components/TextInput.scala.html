@@ -1,0 +1,16 @@
+@import uk.gov.hmrc.govukfrontend.views.Aliases.{Input, Text}
+@import uk.gov.hmrc.govukfrontend.views.Implicits.RichInput
+@import uk.gov.hmrc.govukfrontend.views.html.components.GovukInput
+@import uk.gov.hmrc.govukfrontend.views.viewmodels.hint.Hint
+
+@this(govukInput: GovukInput)
+
+@(form: Form[String], fieldName: String, hintText: String)(implicit messages: Messages)
+
+    @govukInput(Input(
+        id = fieldName,
+        name = fieldName,
+        hint = Some(Hint(
+            content = Text(hintText)
+        ))
+    ).withFormField(form(fieldName)))

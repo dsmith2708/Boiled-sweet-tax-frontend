@@ -1,0 +1,8 @@
+@import uk.gov.hmrc.govukfrontend.views.Aliases.{SummaryList, SummaryListRow}
+@import uk.gov.hmrc.govukfrontend.views.html.components.GovukSummaryList
+
+@this(govukSummaryList : GovukSummaryList)
+
+@(summaryListRows: Seq[SummaryListRow])
+
+@govukSummaryList(SummaryList(rows = summaryListRows))

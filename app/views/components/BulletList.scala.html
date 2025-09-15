@@ -1,0 +1,9 @@
+@this()
+
+    @(textList: Seq[String])
+
+    <ul class="govuk-list govuk-list--bullet">
+        @for(text <- textList) {
+            <li>@text</li>
+        }
+    </ul>

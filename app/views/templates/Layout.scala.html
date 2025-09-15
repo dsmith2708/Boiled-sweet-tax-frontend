@@ -1,0 +1,25 @@
+@*
+* This template is called from the other views. This template
+* handles the rendering of the page in the GovUK style.
+*@
+@import uk.gov.hmrc.hmrcfrontend.views.config.StandardBetaBanner
+@import uk.gov.hmrc.hmrcfrontend.views.html.helpers.HmrcStandardPage
+@import uk.gov.hmrc.hmrcfrontend.views.viewmodels.hmrcstandardpage.HmrcStandardPageParams
+
+@this(hmrcStandardPage: HmrcStandardPage, standardBetaBanner: StandardBetaBanner)
+
+@(pageTitle: String, hasErrors: Boolean = false)(contentBlock: Html)(implicit request: RequestHeader, messages: Messages)
+
+
+    @gdsTitle = @{
+        s"""${if(hasErrors){ s"""${messages("error.prefix")} """ } else ""}$pageTitle - ${messages("service.name")} - GOV.UK"""
+    }
+
+
+    @hmrcStandardPage(
+        HmrcStandardPageParams(
+            serviceName = Some(messages("service.name")),
+            pageTitle = Some(gdsTitle),
+            isWelshTranslationAvailable = false /* or true if your service has been translated */
+        )
+    )(contentBlock)

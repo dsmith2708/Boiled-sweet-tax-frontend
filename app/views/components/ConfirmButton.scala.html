@@ -1,0 +1,13 @@
+@import uk.gov.hmrc.govukfrontend.views.Aliases.Text
+@import uk.gov.hmrc.govukfrontend.views.html.components.GovukButton
+@import uk.gov.hmrc.govukfrontend.views.viewmodels.button.Button
+
+@this(govukButton: GovukButton)
+
+@()(implicit messages: Messages)
+
+    @govukButton(Button(
+        attributes = Map("id" -> "confirm"),
+        classes = "govuk-!-margin-right-1",
+        content = Text(messages("common.confirm"))
+    ))

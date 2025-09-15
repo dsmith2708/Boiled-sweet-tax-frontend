@@ -1,0 +1,30 @@
+@import templates.Layout
+@import uk.gov.hmrc.govukfrontend.views.html.components.FormWithCSRF
+@import views.html.components.{ContinueButton, ErrorOutline, Heading, TextInput}
+
+@this(layout: Layout,
+        formwithCSRF: FormWithCSRF,
+        errorOutline: ErrorOutline,
+        heading: Heading,
+        textInput: TextInput,
+        continueButton: ContinueButton
+)
+
+
+@(businessNameForm: Form[String], formAction: Call)(implicit request: RequestHeader, messages: Messages)
+
+    @layout(messages("businessName.title"), businessNameForm.hasErrors) {
+        @formwithCSRF(action = formAction) {
+
+            @errorOutline(businessNameForm)
+
+            @heading(messages("businessName.heading"))
+
+            @textInput(
+                form = businessNameForm,
+                fieldName = "businessName",
+                hintText = messages("businessName.hint"))
+
+            @continueButton()
+        }
+    }
