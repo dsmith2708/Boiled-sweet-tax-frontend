@@ -2,7 +2,7 @@ package controllers
 
 import connectors.BoiledSweetTax
 import play.api.mvc._
-import services.SummaryListRowBuilder
+import services.{BoiledSweetTaxService, SummaryListRowBuilder}
 import views.html.{CheckAnswersView, ConfirmationView}
 
 import javax.inject._
@@ -11,7 +11,7 @@ import javax.inject._
 class CheckAnswersController @Inject()(checkAnswersView: CheckAnswersView,
                                        summaryListRowBuilder: SummaryListRowBuilder,
                                        confirmationView: ConfirmationView,
-                                       connector: BoiledSweetTax
+                                       service: BoiledSweetTaxService
                                       ) extends MessagesInjectedController {
   def show(): Action[AnyContent] = Action {
     implicit request: MessagesRequest[AnyContent] =>
@@ -23,7 +23,7 @@ class CheckAnswersController @Inject()(checkAnswersView: CheckAnswersView,
 
   def submit()() : Action[AnyContent] = Action.async {
     implicit request: MessagesRequest[AnyContent] =>
-      connector.getUtrValue.map( value => {
+      service.fetchUtr().map(value => {
         Ok(confirmationView(routes.IndexController.show(), value))
       })(scala.concurrent.ExecutionContext.global)
   }
