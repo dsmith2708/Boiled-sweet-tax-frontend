@@ -1,5 +1,7 @@
 package connectors
 
+import play.api.libs.json.JsValue
+
 import javax.inject.{Inject, Singleton}
 import play.api.libs.ws.{EmptyBody, WSClient, WSResponse}
 
@@ -10,11 +12,7 @@ class BoiledSweetTax @Inject()(ws: WSClient)(implicit ec: ExecutionContext) {
 
   private val url = "http://localhost:9002/boiled-sweet-tax-registration/submit"
 
-  def getUtrValue: Future[String] = {
-    val responseValue = ws.url(url).post("").map{
-      response => {
-        (response.json \ "utr").as[String]
-      }
-    }
-    responseValue
+  def getUtrValue: Future[JsValue] = {
+      ws.url(url).post("").map(_.json)
   }
+}
