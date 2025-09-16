@@ -12,7 +12,7 @@ class BoiledSweetTax @Inject()(ws: WSClient)(implicit ec: ExecutionContext) {
 
   private val url = "http://localhost:9002/boiled-sweet-tax-registration/submit"
 
-  def getUtrValue: Future[JsValue] = {
-      ws.url(url).post("").map(_.json)
+  def getUtrValue: Future[Option[JsValue]] = {
+      ws.url(url).post("").map( value => Some(value.json)).recover(e => None)
   }
 }
