@@ -1,6 +1,4 @@
 package controllers
-
-import connectors.BoiledSweetTax
 import play.api.mvc._
 import services.{BoiledSweetTaxService, SummaryListRowBuilder}
 import views.html.{CheckAnswersView, ConfirmationView}

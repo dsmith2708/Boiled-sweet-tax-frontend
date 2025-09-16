@@ -7,7 +7,11 @@ import views.html.BusinessNameView
 import javax.inject.{Inject, Singleton}
 
 @Singleton
-class BusinessNameController @Inject()(view: BusinessNameView) extends MessagesInjectedController {
+class BusinessNameController @Inject()(view: BusinessNameView
+
+
+
+                                      ) extends MessagesInjectedController {
 
   def show(): Action[AnyContent] = Action {
     implicit request: MessagesRequest[AnyContent] =>
