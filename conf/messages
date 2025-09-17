@@ -48,7 +48,7 @@ confirmation.paragraphThree = You will be contacted again later to confirm your 
 
 
 errorpage.title = service error
-errorpage.heading = Their is a problem with the business name
+errorpage.heading =   Error 418 I'm a teapot
 errorpage.paragraphOne = follow link to retry
 
 error.prefix = Error:

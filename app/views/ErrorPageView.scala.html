@@ -2,8 +2,12 @@
 @import views.html.components._
 @import views.html.templates.Layout
 
+
+
+
 @this(
-paragraph:Paragraph,
+heading: Heading,
+paragraph: Paragraph,
 layout: Layout)
 
 @()(implicit request: RequestHeader, messages: Messages)
@@ -11,6 +15,7 @@ layout: Layout)
 
 @layout(messages("errorpage.title")){
 
+@heading(messages("errorpage.heading"))
 <h1>
     Error 418 I'm a teapot
 </h1>
