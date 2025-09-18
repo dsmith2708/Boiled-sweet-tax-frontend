@@ -1,6 +1,6 @@
 package connectors
 
-import play.api.libs.json.JsValue
+import play.api.libs.json._
 
 import javax.inject.{Inject, Singleton}
 import play.api.libs.ws.{EmptyBody, WSClient, WSResponse}
