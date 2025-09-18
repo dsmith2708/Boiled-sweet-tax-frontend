@@ -1,13 +1,14 @@
 @import templates.Layout
 @import uk.gov.hmrc.govukfrontend.views.html.components.FormWithCSRF
-@import views.html.components.{ContinueButton, ErrorOutline, Heading, TextInput}
+@import views.html.components.{ContinueButton, ErrorOutline, Heading, TextInput, BackLink}
 
 @this(layout: Layout,
         formwithCSRF: FormWithCSRF,
         errorOutline: ErrorOutline,
         heading: Heading,
         textInput: TextInput,
-        continueButton: ContinueButton
+        continueButton: ContinueButton,
+        backLink: BackLink
 )
 
 
@@ -15,6 +16,8 @@
 
     @layout(messages("businessName.title"), businessNameForm.hasErrors) {
         @formwithCSRF(action = formAction) {
+
+            @backLink("/register-for-boiled-sweet-tax")
 
             @errorOutline(businessNameForm)
 
