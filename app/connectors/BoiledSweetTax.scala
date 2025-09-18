@@ -22,7 +22,7 @@ class BoiledSweetTax @Inject()(ws: WSClient)(implicit ec: ExecutionContext) {
       ws.url(getUtrUrl).post("").map( value => Some(value.json)).recover(e => None)
   }
 
-  def submitBusinessData(data: BusinessData): Unit = {
+  def submitBusinessData(data: BusinessData): Future[WSResponse] = {
     val json: JsValue = JsObject(Seq(
       "businessName" -> JsString(data.businessName),
       "businessDate" -> JsObject(Seq(

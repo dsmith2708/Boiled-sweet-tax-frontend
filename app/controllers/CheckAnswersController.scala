@@ -1,13 +1,14 @@
 package controllers
 
 import connectors.BoiledSweetTax
-import models.{BusinessData, BusinessAddress, BusinessDate}
+import models.{BusinessAddress, BusinessData, BusinessDate}
+import play.api.libs.ws.WSResponse
 import play.api.mvc._
 import services.{BoiledSweetTaxService, SummaryListRowBuilder}
 import views.html.{CheckAnswersView, ConfirmationView, ErrorPageView}
 
 import javax.inject._
-import scala.concurrent.ExecutionContext
+import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
 class CheckAnswersController @Inject()(checkAnswersView: CheckAnswersView,
@@ -44,14 +45,22 @@ class CheckAnswersController @Inject()(checkAnswersView: CheckAnswersView,
           postcode = request.session.get("businessAddress.postcode").getOrElse("")
         ))
 
-      connector.submitBusinessData(businessData)
+      val submitResponse: Future[WSResponse] = connector.submitBusinessData(businessData)
 
-      service.fetchUtr().map {
-        case None => BadRequest(errorPage())
-        case Some(populatedValue) => Ok(confirmationView(routes.IndexController.show(), populatedValue))
-      }(scala.concurrent.ExecutionContext.global)
+      submitResponse.flatMap { response =>
+        val statusCode = response.status
+        val statusText = response.statusText
+
+        if (statusCode == OK) {
+          service.fetchUtr().map {
+            case None => InternalServerError(errorPage("500 Internal server error"))
+            case Some(populatedValue) => Ok(confirmationView(routes.IndexController.show(), populatedValue))
+          }(scala.concurrent.ExecutionContext.global)
+        }
+        else {
+          Future(Status(statusCode)(errorPage("There is a business with this name already registered.")))
+        }
+      }
     }
   }
-
-
 }
