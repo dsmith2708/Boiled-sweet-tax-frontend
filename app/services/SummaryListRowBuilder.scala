@@ -24,7 +24,6 @@ class SummaryListRowBuilder @Inject() {
       postcode = request.session.get("businessAddress.postcode").getOrElse("")
     )
 
-    val businessDate = request.session.get("businessDate").getOrElse("")
     val date = BusinessDate(
       day = request.session.get("businessDate.day").getOrElse(""),
       month = request.session.get("businessDate.month").getOrElse(""),
