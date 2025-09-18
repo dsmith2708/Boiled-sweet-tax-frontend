@@ -15,15 +15,32 @@ layout: Layout)
 
 @layout(messages("errorpage.title")){
 
-<h1>
-    Error 418 I'm a teapot
-</h1>
-<p class="govuk-body">Try again later .</p>
+<style>
+    h1 {
+    font-family: GDS Transport;
+    font-size: 3em;
+    font-color: #FF0000;
+    }
+    h2 {
+    font-family: GDS Transport;
+    font size: 3 em;
+    }
+    a {
+    font-family: GDS Transport;
+    }
+</style>
 
-<p class="govuk-body">We saved your answers. They will be available for 30 days.</p>
+<h1>  <span style="color: red;">Error</span> 418 i'm a teapot</h1>
+
+
+<p class="govuk-body">Try again later </p>
 
 <p class="govuk-body">
-    <a href="#" class="govuk-link">Refresh page </a> if you need to make changes to your claim or speak to someone about your tax credits.
+    We saved your answers. They will be available for 30 days.
+</p>
+
+<p class="govuk-body">
+    <a href = @controllers.routes.CheckAnswersController.show() class="govuk-link">Go back to check answers </a> if you need to make changes to your claim or speak to someone about your tax credits.
 </p>
 
 

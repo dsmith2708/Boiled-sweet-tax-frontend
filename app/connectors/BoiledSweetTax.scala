@@ -8,7 +8,7 @@ import play.api.libs.ws.{EmptyBody, WSClient, WSResponse}
 import scala.concurrent.{ExecutionContext, Future}
 
 @Singleton
-class BoiledSweetTax @Inject()(ws: WSClient)(implicit ec: ExecutionContext) {
+class  BoiledSweetTax @Inject()(ws: WSClient)(implicit ec: ExecutionContext) {
 
   private val url = "http://localhost:9002/boiled-sweet-tax-registration/submit"
 
