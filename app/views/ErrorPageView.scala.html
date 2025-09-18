@@ -14,14 +14,27 @@ layout: Layout)
 
 
 @layout(messages("errorpage.title")){
-<h1 class="govuk-heading-xl">@errorMessage</h1>
+
+<style>
+    h1 {
+    font-family: GDS Transport;
+    font-size: 3em;
+    font-color: FF0000;
+    }
+    a {
+    font-family: GDS Transport;
+    }
+</style>
+
+
+<h1 class="govuk-heading-xl"><span style ="color: red;">@errorMessage</span></h1>
 
 <p class="govuk-body">Try again later .</p>
 
 <p class="govuk-body">We saved your answers. They will be available for 30 days.</p>
 
 <p class="govuk-body">
-    <a href = "http://localhost:9100/register-for-boiled-sweet-tax/check-answers"   class="govuk-link">Refresh page </a> if you need to make changes to your claim or speak to someone about your tax credits.
+    <a href = @controllers.routes.CheckAnswersController.show() class="govuk-link">Go back to check answers </a> if you need to make changes to your claim or speak to someone about your tax credits.
 </p>
 
 
