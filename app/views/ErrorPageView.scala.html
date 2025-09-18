@@ -1,0 +1,33 @@
+@import uk.gov.hmrc.govukfrontend.views.html.components.FormWithCSRF
+@import views.html.components._
+@import views.html.templates.Layout
+
+
+
+
+@this(
+heading: Heading,
+paragraph: Paragraph,
+layout: Layout)
+
+@()(implicit request: RequestHeader, messages: Messages)
+
+
+@layout(messages("errorpage.title")){
+
+<h1>
+    Error 418 I'm a teapot
+</h1>
+<p class="govuk-body">Try again later .</p>
+
+<p class="govuk-body">We saved your answers. They will be available for 30 days.</p>
+
+<p class="govuk-body">
+    <a href="#" class="govuk-link">Refresh page </a> if you need to make changes to your claim or speak to someone about your tax credits.
+</p>
+
+
+}
+
+
+

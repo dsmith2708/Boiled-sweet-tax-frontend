@@ -47,6 +47,10 @@ confirmation.paragraphTwo = Your registration has been entered into our system.
 confirmation.paragraphThree = You will be contacted again later to confirm your registration, or to ask for more information.
 
 
+errorpage.title = service error
+errorpage.heading =   Error 418 I'm a teapot
+errorpage.paragraphOne = follow link to retry
+
 error.prefix = Error:
 error.registration.empty = Select yes if you would like to register for Boiled Sweet Tax
 

@@ -9,10 +9,12 @@ import scala.concurrent.{ExecutionContext, Future}
 @Singleton
 class BoiledSweetTaxService @Inject()(boiledSweetTax: BoiledSweetTax)(implicit ec: ExecutionContext) {
 
-  def fetchUtr(): Future[String] = {
+  def fetchUtr(): Future[Option[String]] = {
     boiledSweetTax.getUtrValue.map{
       response => {
-        (response \ "utr").as[String]
+        response.map{ value =>
+          (value \ "utr").as[String]
+        }
       }
     }
 
