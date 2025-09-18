@@ -1,0 +1,11 @@
+@import uk.gov.hmrc.govukfrontend.views.html.components._
+
+@this(govukBackLink : GovukBackLink)
+
+@(backUrl: String)(implicit messages: Messages, request: RequestHeader)
+
+
+@govukBackLink(BackLink(
+    href = backUrl,
+    content = Text("Back")
+))

@@ -1,6 +1,6 @@
 @import templates.Layout
 @import uk.gov.hmrc.govukfrontend.views.html.components.FormWithCSRF
-@import views.html.components.{ContinueButton, ErrorOutline, Heading, DateInput}
+@import views.html.components.{ContinueButton, ErrorOutline, Heading, DateInput, BackLink}
 @import uk.gov.hmrc.govukfrontend.views.html.components._
 
 @this(
@@ -10,13 +10,16 @@
         heading: Heading,
         govukDateInput : GovukDateInput,
         dateInput: DateInput,
-        continueButton: ContinueButton
+        continueButton: ContinueButton,
+        backLink: BackLink
 )
 
 @(businessDateForm: Form[BusinessDate], formAction: Call)(implicit request: RequestHeader, messages: Messages)
 
 @layout(messages("businessDate.title"), businessDateForm.hasErrors) {
     @formwithCSRF(action = formAction) {
+
+        @backLink("/register-for-boiled-sweet-tax/business-name")
 
         @errorOutline(businessDateForm)
 
