@@ -43,22 +43,23 @@ class CheckAnswersController @Inject()(checkAnswersView: CheckAnswersView,
           city = request.session.get("businessAddress.city").getOrElse(""),
           county = request.session.get("businessAddress.county").getOrElse(""),
           postcode = request.session.get("businessAddress.postcode").getOrElse("")
-        ))
-
+        )
+      )
       val submitResponse: Future[WSResponse] = connector.submitBusinessData(businessData)
 
       submitResponse.flatMap { response =>
-        val statusCode = response.status
-        val statusText = response.statusText
+        response.status match {
+          // The data entered isn't valid to be registered
+          case BAD_REQUEST => Future(BadRequest(errorPage(response.body)))
 
-        if (statusCode == OK) {
-          service.fetchUtr().map {
-            case None => InternalServerError(errorPage("500 Internal server error"))
+          // The data was successfully submitted, fetch the utr and load confirmation page
+          case OK => service.fetchUtr().map {
             case Some(populatedValue) => Ok(confirmationView(routes.IndexController.show(), populatedValue))
+            case None => InternalServerError(errorPage("500 Error: Internal server error"))
           }(scala.concurrent.ExecutionContext.global)
-        }
-        else {
-          Future(Status(statusCode)(errorPage("There is a business with this name already registered.")))
+
+          // Unknown error
+          case _ => Future(Status(response.status)(errorPage(response.statusText + response.body)))
         }
       }
     }
