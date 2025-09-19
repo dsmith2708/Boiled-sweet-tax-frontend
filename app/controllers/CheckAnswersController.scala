@@ -58,8 +58,8 @@ class CheckAnswersController @Inject()(checkAnswersView: CheckAnswersView,
             case None => InternalServerError(errorPage("500 Error: Internal server error"))
           }(scala.concurrent.ExecutionContext.global)
 
-          // Unknown internal server error
-          case _ => Future(InternalServerError(errorPage("500 Error:" + response.body)))
+          // Unknown error
+          case _ => Future(Status(response.status)(errorPage(response.statusText + response.body)))
         }
       }
     }
