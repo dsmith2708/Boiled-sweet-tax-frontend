@@ -45,7 +45,7 @@ class CheckAnswersController @Inject()(checkAnswersView: CheckAnswersView,
           postcode = request.session.get("businessAddress.postcode").getOrElse("")
         )
       )
-      var submitResponse = connector.submitBusinessData(businessData)
+      var submitResponse: Future[WSResponse] = connector.submitBusinessData(businessData)
 
       submitResponse.flatMap { response =>
         response.status match {
